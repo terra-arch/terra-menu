@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra — Menü</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6EFDF;
+    --cream-deep:#EFE4CC;
+    --ink:#3B2A1B;
+    --ink-soft:#6B5A46;
+    --hot:#7A4A24;
+    --hot-line:#C9A26B;
+    --iced:#2C6CA0;
+    --iced-line:#A9C9E4;
+    --mock:#2F6B3E;
+    --mock-line:#AFCBB2;
+    --clay:#B5602D;
+    --rule:rgba(59,42,27,0.18);
+  }
+  
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    padding-bottom:3rem;
+    transition: background 0.3s, color 0.3s;
+  }
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:var(--cream);
+    border-bottom:1px solid var(--rule);
+    padding:0.9rem 1rem 0.7rem;
+    transition: background 0.3s;
+  }
+  .brand{
+    text-align:center;
+    font-family:'Yellowtail', cursive;
+    font-size:2.6rem;
+    color:var(--ink);
+    line-height:1;
+    margin:0 0 0.6rem;
+  }
+  .navpills{
+    display:flex; gap:8px;
+    overflow-x:auto;
+    scrollbar-width:none;
+    padding:0 2px 2px;
+  }
+  .navpills::-webkit-scrollbar{display:none;}
+  .navpills a{
+    flex:0 0 auto;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:0.5rem 0.9rem;
+    border-radius:999px;
+    border:1px solid var(--rule);
+    color:var(--ink-soft);
+    white-space:nowrap;
+    background:var(--cream-deep);
+  }
+  .navpills a.hot{color:var(--hot); border-color:var(--hot-line);}
+  .navpills a.iced{color:var(--iced); border-color:var(--iced-line);}
+  .navpills a.mock{color:var(--mock); border-color:var(--mock-line);}
+
+  main{max-width:480px; margin:0 auto; padding:0 1.1rem;}
+
+  section{scroll-margin-top:96px; padding-top:2.1rem;}
+  section:first-of-type{padding-top:1.6rem;}
+
+  .sect-head{
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:0.9rem;
+  }
+  .sect-head .icon{
+    width:30px; height:30px; flex:0 0 auto;
+  }
+  
+  /* SVG renklerini CSS değişkenlerine bağladık */
+  .hot .icon path, .hot .icon stroke { stroke: var(--hot); }
+  .iced .icon path, .iced .icon stroke { stroke: var(--iced); }
+  .mock .icon path, .mock .icon stroke { stroke: var(--mock); }
+
+  .sect-head h2{
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:1.15rem;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    margin:0;
+  }
+  .hot h2{color:var(--hot);}
+  .iced h2{color:var(--iced);}
+  .mock h2{color:var(--mock);}
+
+  .sect-rule{border:none; height:2px; margin:0 0 1rem; border-radius:2px;}
+  .hot .sect-rule{background:var(--hot-line);}
+  .iced .sect-rule{background:var(--iced-line);}
+  .mock .sect-rule{background:var(--mock-line);}
+
+  ul.items{list-style:none; margin:0; padding:0;}
+  ul.items li{
+    display:flex; align-items:baseline;
+    gap:6px;
+    padding:0.62rem 0;
+    border-bottom:1px dashed var(--rule);
+  }
+  ul.items li:last-child{border-bottom:none;}
+  .iname{
+    font-size:0.98rem;
+    font-weight:500;
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .dots{
+    flex:1;
+    border-bottom:1.5px dotted var(--ink-soft);
+    opacity:0.55;
+    height:0;
+    transform:translateY(-4px);
+    min-width:12px;
+  }
+  .iprice{
+    font-size:0.98rem;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .hot .iprice{color:var(--hot);}
+  .iced .iprice{color:var(--iced);}
+  .mock .iprice{color:var(--mock);}
+
+  .bean-divider{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    margin:2.3rem 0 0;
+    color:var(--ink-soft);
+    opacity:0.6;
+  }
+  .bean-divider .line{flex:1; height:1px; background:var(--rule); max-width:60px;}
+  .bean-divider svg{width:14px; height:14px;}
+  .bean-divider svg ellipse, .bean-divider svg path { stroke: var(--ink-soft); }
+
+  footer{
+    text-align:center;
+    margin-top:2.6rem;
+    padding-top:1.4rem;
+    border-top:1px solid var(--rule);
+  }
+  footer p{
+    font-family:'Yellowtail', cursive;
+    font-size:1.4rem;
+    color:var(--clay);
+    margin:0 0 0.2rem;
+  }
+  footer span{
+    display:block;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* Kapsamlı Dark Mod Düzeltmeleri */
+  @media (prefers-color-scheme: dark){
+    :root {
+      --cream: #1A1510;
+      --cream-deep: #2A2118;
+      --ink: #F2E9D8;
+      --ink-soft: #A89985;
+      --hot: #E69D62;
+      --hot-line: #8C5832;
+      --iced: #5EA6E0;
+      --iced-line: #1D4B73;
+      --mock: #66C27A;
+      --mock-line: #1C4D28;
+      --clay: #E68249;
+      --rule: rgba(242,233,216,0.15);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <p class="brand">Terra</p>
+  <nav class="navpills">
+    <a class="hot" href="#hot">Sıcaklar</a>
+    <a class="iced" href="#iced">Soğuk Kahve</a>
+    <a class="mock" href="#mock">Mocktail Bar</a>
+  </nav>
+</div>
+
+<main>
+
+  <section id="hot" class="hot">
+    <div class="sect-head">
+      <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 20h26v10a10 10 0 0 1-10 10H18A10 10 0 0 1 8 30V20Z" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M34 22h4a5 5 0 0 1 0 10h-4" stroke-width="2.4"/>
+        <path d="M16 8c-2 2-2 4 0 6M23 8c-2 2-2 4 0 6" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <h2>Sıcak Kahve</h2>
+    </div>
+    <hr class="sect-rule">
+    <ul class="items">
+      <li><span class="iname">Espresso (Tek)</span><span class="dots"></span><span class="iprice">₺100</span></li>
+      <li><span class="iname">Espresso (Duble)</span><span class="dots"></span><span class="iprice">₺120</span></li>
+      <li><span class="iname">Americano</span><span class="dots"></span><span class="iprice">₺130</span></li>
+      <li><span class="iname">Cappuccino</span><span class="dots"></span><span class="iprice">₺150</span></li>
+      <li><span class="iname">Latte</span><span class="dots"></span><span class="iprice">₺150</span></li>
+      <li><span class="iname">Flat White</span><span class="dots"></span><span class="iprice">₺150</span></li>
+      <li><span class="iname">Mocha</span><span class="dots"></span><span class="iprice">₺160</span></li>
+      <li><span class="iname">Macchiato</span><span class="dots"></span><span class="iprice">₺160</span></li>
+      <li><span class="iname">Sıcak Çikolata</span><span class="dots"></span><span class="iprice">₺160</span></li>
+      <li><span class="iname">Chai Latte</span><span class="dots"></span><span class="iprice">₺160</span></li>
+      <li><span class="iname">Çay</span><span class="dots"></span><span class="iprice">₺50</span></li>
+      <li><span class="iname">Türk Kahvesi</span><span class="dots"></span><span class="iprice">₺70</span></li>
+      <li><span class="iname">Bitki Çayları</span><span class="dots"></span><span class="iprice">₺80</span></li>
+    </ul>
+  </section>
+
+  <div class="bean-divider">
+    <span class="line"></span>
+    <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="9" ry="6.5" stroke-width="1.6" transform="rotate(-30 12 12)"/><path d="M6 12c2-2 10-2 12 0" stroke-width="1.6" stroke-linecap="round" transform="rotate(-30 12 12)"/></svg>
+    <span class="line"></span>
+  </div>
+
+  <section id="iced" class="iced">
+    <div class="sect-head">
+      <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 6 6 16v16l18 10 18-10V16L24 6Z" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M6 16l18 10 18-10M24 26v16" stroke-width="2.4" stroke-linejoin="round"/>
+      </svg>
+      <h2>Soğuk Kahve</h2>
+    </div>
+    <hr class="sect-rule">
+    <ul class="items">
+      <li><span class="iname">Iced Espresso</span><span class="dots"></span><span class="iprice">₺110</span></li>
+      <li><span class="iname">Iced Americano</span><span class="dots"></span><span class="iprice">₺140</span></li>
+      <li><span class="iname">Iced Latte</span><span class="dots"></span><span class="iprice">₺160</span></li>
+      <li><span class="iname">Iced Mocha</span><span class="dots"></span><span class="iprice">₺170</span></li>
+      <li><span class="iname">Iced Macchiato</span><span class="dots"></span><span class="iprice">₺170</span></li>
+      <li><span class="iname">Affogato</span><span class="dots"></span><span class="iprice">₺180</span></li>
+    </ul>
+  </section>
+
+  <div class="bean-divider">
+    <span class="line"></span>
+    <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="9" ry="6.5" stroke-width="1.6" transform="rotate(-30 12 12)"/><path d="M6 12c2-2 10-2 12 0" stroke-width="1.6" stroke-linecap="round" transform="rotate(-30 12 12)"/></svg>
+    <span class="line"></span>
+  </div>
+
+  <section id="mock" class="mock">
+    <div class="sect-head">
+      <svg class="icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 8h28l-12 16v14" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M18 38h12" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M12 11h24" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <h2>Mocktail Bar</h2>
+    </div>
+    <hr class="sect-rule">
+    <ul class="items">
+      <li><span class="iname">Classic Mojito</span><span class="dots"></span><span class="iprice">₺220</span></li>
+      <li><span class="iname">Blue Lagoon</span><span class="dots"></span><span class="iprice">₺220</span></li>
+      <li><span class="iname">Tropical Sunset</span><span class="dots"></span><span class="iprice">₺220</span></li>
+      <li><span class="iname">Red Berry Fizz</span><span class="dots"></span><span class="iprice">₺220</span></li>
+      <li><span class="iname">Green Garden</span><span class="dots"></span><span class="iprice">₺200</span></li>
+      <li><span class="iname">Pink Paradise</span><span class="dots"></span><span class="iprice">₺220</span></li>
+      <li><span class="iname">Passion Star</span><span class="dots"></span><span class="iprice">₺230</span></li>
+      <li><span class="iname">Blueberry Shade</span><span class="dots"></span><span class="iprice">₺230</span></li>
+      <li><span class="iname">Watermelon Cooler</span><span class="dots"></span><span class="iprice">₺220</span></li>
+      <li><span class="iname">Apple Cinnamon</span><span class="dots"></span><span class="iprice">₺200</span></li>
+      <li><span class="iname">Su</span><span class="dots"></span><span class="iprice">₺35</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Terra</p>
+    <span>Afiyet olsun</span>
+  </footer>
+
+</main>
+
+</body>
+</html>
